@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { styles } from "./src/styles/styles";
 
 import {
@@ -11,14 +11,18 @@ import ComponenteExportados from "./src/components/SecondComponent";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text> akira</Text>
-      <FirstComponent />
-      {/* <SecondComponent />
-      <ComponenttTesting /> */}
-      <ComponenteExportados.Testing1 />
+    <FatherComponent>
+      <Text>Componente filho</Text>
+      <Button title="Button Componente pai" />
+    </FatherComponent>
+  );
+}
 
-      <StatusBar style="auto" />
+function FatherComponent({ children }) {
+  return (
+    <View style={styles.container}>
+      <Text>Componente pai</Text>
+      {children}
     </View>
   );
 }
